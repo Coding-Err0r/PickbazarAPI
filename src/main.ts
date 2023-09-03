@@ -11,7 +11,6 @@ async function bootstrap() {
     .setTitle('Pick Bazar')
     .setDescription('Pick Bazar API')
     .setVersion('1.0')
-    .addTag('pickbazar')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('docs', app, document);

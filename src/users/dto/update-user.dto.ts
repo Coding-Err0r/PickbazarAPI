@@ -1,9 +1,9 @@
-export type CreateUserParams = {
+export class UpdateUserDto {
   name: string;
   email: string;
   password?: string;
   shop_id?: number;
   is_active?: boolean;
   created_at: Date;
-  updateded_at: Date;
-};
+  updated_at: Date;
+}

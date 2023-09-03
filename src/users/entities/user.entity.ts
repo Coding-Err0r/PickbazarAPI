@@ -31,7 +31,7 @@ export class User {
   created_at: Date;
 
   @Column()
-  updateded_at: Date;
+  updated_at: Date;
 
   // For relationship between other tables
 }
