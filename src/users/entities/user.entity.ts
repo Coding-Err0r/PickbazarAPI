@@ -1,3 +1,4 @@
+import { Profile } from 'src/profile/entities/profile.entity';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -34,4 +35,12 @@ export class User {
   updated_at: Date;
 
   // For relationship between other tables
+
+  @OneToOne(() => Profile, {
+    createForeignKeyConstraints: false,
+    onDelete: 'CASCADE',
+    orphanedRowAction: 'delete',
+  })
+  @JoinColumn()
+  profile: Profile;
 }

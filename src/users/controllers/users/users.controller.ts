@@ -21,7 +21,7 @@ export class UsersController {
 
   // Get all users
   @Get()
-  @ApiOperation({ summary: 'Gell all users' })
+  @ApiOperation({ summary: 'Get all users' })
   async getAllUsers() {
     const users = await this.usersService.fetchAllUsers();
     return users;
@@ -29,7 +29,7 @@ export class UsersController {
 
   // Get user by Id
   @Get(':id')
-  @ApiOperation({ summary: 'Gell user by id' })
+  @ApiOperation({ summary: 'Get user by id' })
   getUser(@Param('id') id: number) {
     return this.usersService.fetchUserById(id);
   }

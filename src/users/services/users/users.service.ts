@@ -28,6 +28,7 @@ export class UsersService {
         shop_id: true,
         is_active: true,
       },
+      relations: ['profile'],
     });
   }
 
@@ -43,6 +44,7 @@ export class UsersService {
         shop_id: true,
         is_active: true,
       },
+      relations: ['profile'],
     });
   }
 
