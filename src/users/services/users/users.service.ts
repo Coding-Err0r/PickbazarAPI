@@ -3,11 +3,13 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from 'src/users/entities/user.entity';
 import { CreateUserParams, UpdateUserParams } from 'src/utils/user.types';
+import { Profile } from 'src/profile/entities/profile.entity';
 
 @Injectable()
 export class UsersService {
   constructor(
     @InjectRepository(User) private userRepository: Repository<User>,
+    @InjectRepository(Profile) private profileRepository: Repository<Profile>,
   ) {}
 
   createUser(userDetails: CreateUserParams) {
@@ -52,7 +54,14 @@ export class UsersService {
     return this.userRepository.update({ id }, { ...updateUserDetails });
   }
 
-  deleteUserById(id: number) {
+  async deleteUserById(id: number) {
+    const user = await this.userRepository.findOne({
+      where: { id: id },
+      relations: ['profile'],
+    });
+
+    const profile = user.profile;
+    await this.profileRepository.remove(profile);
     return this.userRepository.delete({ id });
   }
 }

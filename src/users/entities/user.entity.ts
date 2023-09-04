@@ -36,9 +36,9 @@ export class User {
 
   // For relationship between other tables
 
-  @OneToOne(() => Profile, {
+  @OneToOne(() => Profile, (profile) => profile.user, {
     createForeignKeyConstraints: false,
-    onDelete: 'CASCADE',
+    onDelete: 'SET NULL',
     orphanedRowAction: 'delete',
   })
   @JoinColumn()

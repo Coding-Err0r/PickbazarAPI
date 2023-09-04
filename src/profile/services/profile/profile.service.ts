@@ -57,7 +57,6 @@ export class ProfileService {
   }
 
   fetchProfileByUserId(id: number) {
-    console.log(id);
     return this.userRepository.find({
       where: {
         id: id,
@@ -74,11 +73,11 @@ export class ProfileService {
   }
 
   async deleteProfileById(id: number) {
-    const user = await this.userRepository.findOne({
-      where: { profile: { id: id } },
-    });
-    const userId: number = user.id;
-    await this.userRepository.update({ id: userId }, { profile: null });
+    // const user = await this.userRepository.findOne({
+    //   where: { profile: { id: id } },
+    // });
+    // const userId: number = user.id;
+    // await this.userRepository.update({ id: userId }, { profile: null });
     return this.profileRepository.delete(id);
   }
 }

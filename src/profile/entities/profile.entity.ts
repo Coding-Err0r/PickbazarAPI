@@ -29,7 +29,7 @@ export class Profile {
   updated_at: Date;
 
   // For relationship between other tables
-  // @OneToOne(() => User, (user) => user.profile)
-  // user: User;
+  @OneToOne(() => User, (user) => user.profile, { onDelete: 'CASCADE' }) // specify inverse side as a second parameter
+  user: User;
   //   socials?: Social[];
 }
