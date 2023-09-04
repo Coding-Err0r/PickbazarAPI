@@ -10,7 +10,7 @@ import {
 
 @Entity({ name: 'users' })
 export class User {
-  @PrimaryGeneratedColumn({ type: 'bigint' })
+  @PrimaryGeneratedColumn({ type: 'int' })
   id: number;
 
   @Column()
