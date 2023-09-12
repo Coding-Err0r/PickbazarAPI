@@ -1,3 +1,4 @@
+import { Address } from 'src/address/entities/address.entity';
 import { Profile } from 'src/profile/entities/profile.entity';
 import {
   Entity,
@@ -10,7 +11,7 @@ import {
 
 @Entity({ name: 'users' })
 export class User {
-  @PrimaryGeneratedColumn({ type: 'int' })
+  @PrimaryGeneratedColumn({ type: 'bigint' })
   id: number;
 
   @Column()
@@ -43,4 +44,7 @@ export class User {
   })
   @JoinColumn()
   profile: Profile;
+
+  @OneToMany(() => Address, (address) => address.user)
+  address: Address[];
 }

@@ -30,7 +30,7 @@ export class UsersService {
         shop_id: true,
         is_active: true,
       },
-      relations: ['profile'],
+      relations: ['profile', 'address'],
     });
   }
 
@@ -46,7 +46,7 @@ export class UsersService {
         shop_id: true,
         is_active: true,
       },
-      relations: ['profile'],
+      relations: ['profile', 'address'],
     });
   }
 
@@ -61,7 +61,10 @@ export class UsersService {
     });
 
     const profile = user.profile;
-    await this.profileRepository.remove(profile);
+
+    if (profile) {
+      await this.profileRepository.remove(profile);
+    }
     return this.userRepository.delete({ id });
   }
 }

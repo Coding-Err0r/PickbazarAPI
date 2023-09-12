@@ -36,7 +36,7 @@ export class ProfileController {
 
   // Find profile by User Id
   @Get('user/:id')
-  @ApiOperation({ summary: 'Get profile by id' })
+  @ApiOperation({ summary: 'Get profile by user id' })
   getProfileByUserID(@Param('id') id: number) {
     return this.profileService.fetchProfileByUserId(id);
   }

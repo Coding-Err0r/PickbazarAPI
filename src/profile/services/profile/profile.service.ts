@@ -43,7 +43,7 @@ export class ProfileService {
   }
 
   fetchProfileById(id: number) {
-    return this.profileRepository.find({
+    return this.profileRepository.findOne({
       where: {
         id: id,
       },
